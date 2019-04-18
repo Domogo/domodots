@@ -1,0 +1,44 @@
+# 15 work, 24 home
+#URxvt.font: xft:Ubuntu Mono:Regular:pixelsize=30
+#URxvt.boldFont: xft:Ubuntu Mono:Bold:pixelsize=30
+#URxvt.italicFont: xft:Ubuntu Mono:Italic:pixelsize=30#
+#URxvt.boldItalicFont: xft:Ubuntu Mono:Bold:Italic:size=30
+URxvt.font: xft:Ubuntu Mono:Regular:pixelsize=15
+URxvt.boldFont: xft:Ubuntu Mono:Bold:pixelsize=15
+URxvt.italicFont: xft:Ubuntu Mono:Italic:pixelsize=15
+URxvt.boldItalicFont: xft:Ubuntu Mono:Bold:Italic:size=15
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+urxvt*scrollBar: false
+Xft*dpi:  96
+Xft*antialias:  true
+Xft*hinting:  full
+URxvt*termName: rxvt-256color
+URxvt*xftAntialias: true
+URxvt*background: #000000
+URxvt*foreground: #dcdccc
+URxvt.transparent:   true
+URxvt.tintColor:     white
+URxvt.shading:       20
+URxvt*cursorColor: #aaaaaa
+URxvt*colorUL: #366060
+URxvt*underlineColor: #dfaf8f
+URxvt*color0: #3f3f3f
+URxvt*color1: #cc9393
+URxvt*color2: #7f9f7f
+URxvt*color3: #d0bf8f
+URxvt*color4: #6ca0a3
+URxvt*color5: #dc8cc3
+URxvt*color6: #93e0e3
+URxvt*color7: #dcdccc
+URxvt*color8: #000000
+URxvt*color9: #dca3a3
+URxvt*color10: #bfebbf
+URxvt*color11: #f0dfaf
+URxvt*color12: #8cd0d3
+URxvt*color13: #dc8cc3
+URxvt*color14: #93e0e3
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard
+URxvt*loginShell:  true

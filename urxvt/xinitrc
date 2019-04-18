@@ -1,0 +1,5 @@
+feh --bg-fill '/home/domagoj/Pictures/minimalism-birds-mountains-trees-forest-9k-1920x1080.jpg'
+
+xset s off
+xset -dpms
+xset s noblank
