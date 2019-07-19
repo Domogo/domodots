@@ -20,13 +20,22 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Nerdtree - project structure sidebar
-Plug 'scrooloose/nerdtree'
+"" Plug 'scrooloose/nerdtree'
+
+" ranger for vim
+Plug 'francoiscabrol/ranger.vim'
+" ranger dependancy for neovim
+Plug 'rbgrouleff/bclose.vim'
 
 " coc.nvim intellisense for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" jsx syntax highlighting
+Plug 'mxw/vim-jsx'
+
 " colorcheme
-Plug 'morhetz/gruvbox'
+"" Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
 
 " flake8 plugin
 Plug 'nvie/vim-flake8'
@@ -66,6 +75,11 @@ autocmd BufWritePost *.py call Flake8()
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" , + f open ranger in vim - open file in new tab
+" disable ranger mappings before setting our own.
+let g:ranger_map_keys = 0
+map <leader>f :RangerNewTab<CR>
+
 " easier moving between windows
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -90,14 +104,42 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
+" set tab to two spaces for .js, .html and .css
+au BufNewFile,BufRead *.js
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.html
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+" Virtualenv support
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+EOF
+
 " AIRLINE
 " set airline theme
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
 " colorscheme
-colorscheme gruvbox
-let g:gruvbox_bold = '1'
+"" colorscheme gruvbox
+"" let g:gruvbox_bold = '1'
+let g:seoul256_background = 234
+colorscheme seoul256
 
 " coc.nvim configuration
 
