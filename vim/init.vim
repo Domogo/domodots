@@ -43,6 +43,16 @@ Plug 'nvie/vim-flake8'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
 
+" Dart language server and completion
+Plug 'dart-lang/sdk'
+Plug 'dart-lang/dart-vim-plugin'
+
+" Flutter for vim
+Plug 'thosakwe/vim-flutter'
+
+" typescript syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim'
+
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""
 
@@ -105,7 +115,7 @@ set shiftround
 set expandtab
 
 " set tab to two spaces for .js, .html and .css
-au BufNewFile,BufRead *.js
+au BufNewFile,BufRead *.js*
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
@@ -116,6 +126,16 @@ au BufNewFile,BufRead *.html
     \ set shiftwidth=2
 
 au BufNewFile,BufRead *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.dart
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.ts*
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
