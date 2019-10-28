@@ -34,8 +34,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mxw/vim-jsx'
 
 " colorcheme
-"" Plug 'morhetz/gruvbox'
-Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
+"" Plug 'junegunn/seoul256.vim'
 
 " flake8 plugin
 Plug 'nvie/vim-flake8'
@@ -44,11 +44,11 @@ Plug 'nvie/vim-flake8'
 Plug 'junegunn/goyo.vim'
 
 " Dart language server and completion
-Plug 'dart-lang/sdk'
-Plug 'dart-lang/dart-vim-plugin'
+"" Plug 'dart-lang/sdk'
+"" Plug 'dart-lang/dart-vim-plugin'
 
 " Flutter for vim
-Plug 'thosakwe/vim-flutter'
+"" Plug 'thosakwe/vim-flutter'
 
 " typescript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim'
@@ -115,11 +115,6 @@ set shiftround
 set expandtab
 
 " set tab to two spaces for .js, .html and .css
-au BufNewFile,BufRead *.js*
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
-
 au BufNewFile,BufRead *.html
     \ set tabstop=2 |
     \ set softtabstop=2 |
@@ -135,31 +130,26 @@ au BufNewFile,BufRead *.dart
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
-au BufNewFile,BufRead *.ts*
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
-
 " Virtualenv support
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-EOF
+"" py3 << EOF
+"" import os
+"" import sys
+"" if 'VIRTUAL_ENV' in os.environ:
+""  project_base_dir = os.environ['VIRTUAL_ENV']
+""  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+""  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+"" EOF
 
 " AIRLINE
 " set airline theme
-let g:airline_theme='solarized'
+let g:airline_theme='base16_pop'
 let g:airline_solarized_bg='dark'
 
 " colorscheme
-"" colorscheme gruvbox
-"" let g:gruvbox_bold = '1'
-let g:seoul256_background = 234
-colorscheme seoul256
+colorscheme gruvbox
+let g:gruvbox_bold = '1'
+"" let g:seoul256_background = 234
+"" colorscheme seoul256
 
 " coc.nvim configuration
 
