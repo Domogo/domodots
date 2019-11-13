@@ -59,6 +59,9 @@ call plug#end()
 " show line numbers
 set nu rnu
 
+" set spelling
+set spell spelllang=en_us
+
 " in insert mode show absolute numbers, otherwise hybrid
 augroup numbertoggle
   autocmd!
