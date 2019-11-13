@@ -59,9 +59,6 @@ call plug#end()
 " show line numbers
 set nu rnu
 
-" set spelling
-set spell spelllang=en_us
-
 " in insert mode show absolute numbers, otherwise hybrid
 augroup numbertoggle
   autocmd!
@@ -102,6 +99,10 @@ map <c-h> <c-w>h
 " easier moving of code block in visual mode
 vnoremap < <gv
 vnoremap > >gv
+
+" toggle spell check with F11
+nnoremap <silent> <F11> :set spell!<cr>
+inoremap <silent> <F11> <C-O>:set spell!<cr>
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
