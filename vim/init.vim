@@ -30,6 +30,9 @@ Plug 'rbgrouleff/bclose.vim'
 " coc.nvim intellisense for vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" deoplete completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 " jsx syntax highlighting
 Plug 'mxw/vim-jsx'
 
@@ -43,15 +46,8 @@ Plug 'nvie/vim-flake8'
 " Distraction free writing
 Plug 'junegunn/goyo.vim'
 
-" Dart language server and completion
-"" Plug 'dart-lang/sdk'
-"" Plug 'dart-lang/dart-vim-plugin'
-
-" Flutter for vim
-"" Plug 'thosakwe/vim-flutter'
-
-" typescript syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim'
+" godot script
+Plug 'calviken/vim-gdscript3'
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -97,8 +93,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " easier moving of code block in visual mode
-vnoremap < <gv
-vnoremap > >gv
+vnoremap > <gv
+vnoremap < >gv
 
 " toggle spell check with F11
 nnoremap <silent> <F11> :set spell!<cr>
@@ -129,20 +125,12 @@ au BufNewFile,BufRead *.css
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
-au BufNewFile,BufRead *.dart
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
+" use tabs not spaces for godot files
+au BufNewFile,BufRead *.gd
+    \ set noexpandtab
 
-" Virtualenv support
-"" py3 << EOF
-"" import os
-"" import sys
-"" if 'VIRTUAL_ENV' in os.environ:
-""  project_base_dir = os.environ['VIRTUAL_ENV']
-""  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-""  exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-"" EOF
+" Set clipboard
+set clipboard+=unnamedplus
 
 " AIRLINE
 " set airline theme
@@ -170,9 +158,56 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-markdownlint',
+  \ ]
+
+" Use `[c` and `]c` to navigate diagnostics
+" nmap <silent> [c <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+
+" Deoplete
+"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ deoplete#manual_complete()
+
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> for confirm completion.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
