@@ -81,6 +81,9 @@ autocmd BufWritePost *.py call Flake8()
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
+" map godot lint to F5
+nnoremap <silent> <F5> :! gdlint %<cr>
+
 " , + f open ranger in vim - open file in new tab
 " disable ranger mappings before setting our own.
 let g:ranger_map_keys = 0
@@ -128,6 +131,11 @@ au BufNewFile,BufRead *.css
 " use tabs not spaces for godot files
 au BufNewFile,BufRead *.gd
     \ set noexpandtab
+
+au BufNewFile,BufRead *.java
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
 
 " Set clipboard
 set clipboard+=unnamedplus
